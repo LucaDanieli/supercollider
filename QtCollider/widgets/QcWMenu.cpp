@@ -39,8 +39,8 @@ QcWMenu::QcWMenu() :
 void QcWMenu::setItems( const QVariantList & items )
 {
   clear();
-//  Q_FOREACH( const QVariant & item, items )
-//    addItem( item.toString() );
+  Q_FOREACH( const QVariant & item, items )
+    addAction( item.toString() );
 }
 
 void QcWMenu::doAction( int choice )
