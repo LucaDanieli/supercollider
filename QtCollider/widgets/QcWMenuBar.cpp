@@ -28,23 +28,30 @@ QcWMenuBar::QcWMenuBar() :
   _changed(false),
   _reactivation(false)
 {
-  connect( this, SIGNAL(currentIndexChanged(int)),
+/*  connect( this, SIGNAL(currentIndexChanged(int)),
            this, SLOT(setChanged()) );
   connect( this, SIGNAL(currentIndexChanged(int)),
            this, SLOT(clearChanged()), Qt::QueuedConnection );
 
-  connect( this, SIGNAL(activated(int)), this, SLOT(doAction(int)) );
+  connect( this, SIGNAL(activated(int)), this, SLOT(doAction(int)) ); */
 }
 
 void QcWMenuBar::setItems( const QVariantList & items )
 {
   clear();
-//  Q_FOREACH( const QVariant & item, items )
-//    addItem( item.toString() );
+  Q_FOREACH( const QVariant & item, items ) 
+  {
+    if ( item.canConvert<QMenu*>() ) {
+      addMenu( item.value<QMenu*>() );
+    }
+//    if ( item.canConvert<QString*>() ) {
+//      addAction( item.toString() );
+//    }
+  }
 }
 
 void QcWMenuBar::doAction( int choice )
 {
-  if( _changed || _reactivation )
-    Q_EMIT( action() );
+//  if( _changed || _reactivation )
+//    Q_EMIT( action() );
 }

@@ -445,6 +445,10 @@ WMenuBar : ItemViewBase {
 
 	*qtClass { ^'QcWMenuBar' }
 
+//	*new{ |parent,bounds|
+//		^super.new(parent,bounds)
+//	}
+
 	allowsReselection { ^this.getProperty( \reactivationEnabled ) }
 
 	allowsReselection_ { arg flag; ^this.setProperty( \reactivationEnabled, flag ) }

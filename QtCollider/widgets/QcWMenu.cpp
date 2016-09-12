@@ -40,7 +40,13 @@ void QcWMenu::setItems( const QVariantList & items )
 {
   clear();
   Q_FOREACH( const QVariant & item, items )
-    addAction( item.toString() );
+  {
+    if ( item.canConvert<QMenu*>() ) {
+      addMenu( item.value<QMenu*>() );
+    } else {
+      addAction( item.toString() );
+    }
+  }
 }
 
 void QcWMenu::doAction( int choice )
